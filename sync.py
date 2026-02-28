@@ -3,6 +3,7 @@
 import json
 import logging
 from dataclasses import dataclass
+from pathlib import Path
 
 import requests
 
@@ -10,7 +11,7 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
 base = "https://pretix.kohi.de"
-with open("credentials.json") as f:
+with open(Path(__file__).parent / "credentials.json") as f:
     credentials = json.load(f)
 
 auth = f"Token {credentials['pretix_token']}"

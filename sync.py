@@ -16,7 +16,7 @@ with open(Path(__file__).parent / "credentials.json") as f:
 
 auth = f"Token {credentials['pretix_token']}"
 
-TEST_MODE = True
+TEST_MODE = False
 MAIL_FALLBACK = "mitglieder@kohi.de"
 
 

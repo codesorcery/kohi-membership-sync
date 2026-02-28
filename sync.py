@@ -133,7 +133,6 @@ def create_order(member: Member):
             "status": "p",
             "testmode": TEST_MODE,
             "email": member.email,
-            "payment_provider": "manual",
             "sales_channel": "api.membership-sync",
             "positions": [
                 {

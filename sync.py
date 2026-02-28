@@ -64,7 +64,7 @@ class Member:
                 "family_name": self.family_name,
             },
             "valid_from": "20260101",
-            "valid_to": "29991231",
+            "valid_until": "29991231",
         }
 
 

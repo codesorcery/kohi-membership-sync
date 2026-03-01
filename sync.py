@@ -222,7 +222,7 @@ def create_or_update_member(member: Member) -> None:
 logging.info("Starting sync")
 
 res = requests.get(
-    url="https://cloud.kohi.de/apps/tables/api/1/views/6/rows",
+    url="https://cloud.kohi.de/apps/tables/api/1/views/4/rows",
     headers={"OCS-APIRequest": "true"},
     auth=(credentials["nextcloud"]["username"], credentials["nextcloud"]["password"]),
 )

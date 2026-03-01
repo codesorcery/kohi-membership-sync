@@ -143,6 +143,8 @@ def create_order(member: Member):
             "send_email": True,
         },
     )
+    if res.status_code == 400:
+        logger.error("Error creating order for %s:\n%s", member, res.content)
     res.raise_for_status()
 
 

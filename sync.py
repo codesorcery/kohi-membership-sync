@@ -97,14 +97,24 @@ class Order:
 
 
 def get_all_order_codes() -> set[str]:
-    res = requests.get(
-        f"{base}/api/v1/organizers/kohi/events/mitgliedschaft/orders/?include=code",
-        headers={
-            "Authorization": auth,
-        },
-    )
-    res.raise_for_status()
-    return {x["code"] for x in res.json()["results"]}
+    url = f"{base}/api/v1/organizers/kohi/events/mitgliedschaft/orders/?include=code"
+    result = set()
+    while True:
+        res = requests.get(
+            url,
+            headers={
+                "Authorization": auth,
+            },
+        )
+        res.raise_for_status()
+        content = res.json()
+        result.update({x["code"] for x in content["results"]})
+        next = content.get("next")
+        if next is not None:
+            url = next
+        else:
+            break
+    return result
 
 
 def get_order(code: str) -> Order | None:
